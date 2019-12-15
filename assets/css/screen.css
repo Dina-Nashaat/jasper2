@@ -11,14 +11,12 @@ production stylesheet in assets/built/screen.css
 5.  Site Navigation
 6.  Post Feed
 7.  Single Post
-  7.1. Subscribe Form
   7.2. Post Footer
   7.3. Comments
   7.4. Related Posts
   7.5. Floating Header
 8.  Author Template
 9.  Error Template
-10. Subscribe Overlay
 11. Site Footer
 
 */
@@ -92,12 +90,12 @@ body {
     .home-template .post-feed,
     .tag-template .post-feed,
     .author-template .post-feed {
-        margin-top: -70px;
+        margin-top: 10px;
         padding-top: 0;
     }
     .home-template .site-nav {
         position: relative;
-        top: -70px;
+        top: 0px;
     }
 }
 
@@ -149,10 +147,14 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10vw 4vw;
+    padding: 2vw 4vw;
     min-height: 200px;
     max-height: 450px;
     text-align: center;
+}
+
+.header-link {
+    color: #fff
 }
 
 .site-title {
@@ -324,22 +326,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     height: 1.9rem;
 }
 
-.subscribe-button {
-    display: block;
-    padding: 4px 10px;
-    border: #fff 1px solid;
-    color: #fff;
-    font-size: 1.2rem;
-    line-height: 1em;
-    border-radius: 10px;
-    opacity: 0.8;
-}
-
-.subscribe-button:hover {
-    text-decoration: none;
-    opacity: 1;
-}
-
 .rss-button {
     opacity: 0.8;
 }
@@ -462,13 +448,6 @@ The knock-on effect of this is ugly browser-scroll bars at the bottom, so 80px o
     border-radius: 100%;
 
     object-fit: cover;
-}
-
-.post-card-author {
-    font-size: 1.3rem;
-    font-weight: 500;
-    letter-spacing: 0.5px;
-    text-transform: uppercase;
 }
 
 .reading-time {
@@ -1044,118 +1023,6 @@ Usage (In Ghost editor):
 }
 
 
-/* 7.1. Subscribe Form
-/* ---------------------------------------------------------- */
-
-.subscribe-form {
-    margin: 1.5em 0;
-    padding: 6.5vw 7vw 7vw;
-    border: color(var(--whitegrey) l(+2%)) 1px solid;
-    text-align: center;
-    background: color(var(--whitegrey) l(+4%));
-    border-radius: 7px;
-}
-
-.subscribe-form-title {
-    margin: 0 0 3px 0;
-    padding: 0;
-    color: var(--darkgrey);
-    font-size: 3.5rem;
-    line-height: 1;
-    font-weight: 700;
-}
-
-.subscribe-form p {
-    margin-bottom: 1em;
-    color: var(--midgrey);
-    font-size: 2.2rem;
-    line-height: 1.55em;
-    letter-spacing: 0.2px;
-}
-
-.subscribe-form form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 420px;
-}
-
-.subscribe-form .form-group {
-    flex-grow: 1;
-}
-
-.subscribe-email {
-    display: block;
-    padding: 10px;
-    width: 100%;
-    border: color(var(--lightgrey) l(+7%)) 1px solid;
-    color: var(--midgrey);
-    font-size: 1.8rem;
-    line-height: 1em;
-    font-weight: normal;
-    user-select: text;
-    border-radius: 5px;
-    transition: border-color 0.15s linear;
-
-    -webkit-appearance: none;
-}
-
-.subscribe-email:focus {
-    outline: 0;
-    border-color: color(var(--lightgrey) l(-2%));
-}
-
-.subscribe-form button {
-    display: inline-block;
-    margin: 0 0 0 10px;
-    padding: 0 20px;
-    height: 41px;
-    outline: none;
-    color: #fff;
-    font-size: 1.5rem;
-    line-height: 37px;
-    font-weight: 400;
-    text-align: center;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
-    background: linear-gradient(
-    color(var(--blue) whiteness(+7%)),
-    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 5px;
-    box-shadow: 0 0 0 1px inset rgba(0,0,0,0.14);
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.subscribe-form button:active,
-.subscribe-form button:focus {
-    background: color(var(--blue) lightness(-9%) saturation(-10%));
-}
-
-@media (max-width: 650px) {
-    .subscribe-form-title {
-        font-size: 2.4rem;
-    }
-    .subscribe-form p {
-        font-size: 1.6rem;
-    }
-}
-
-@media (max-width: 500px) {
-    .subscribe-form form {
-        flex-direction: column;
-    }
-    .subscribe-form .form-group {
-        width: 100%;
-    }
-    .subscribe-form button {
-        margin: 10px 0 0 0;
-        width: 100%;
-    }
-}
 
 
 /* 7.2. Post Footer
@@ -1377,134 +1244,6 @@ Usage (In Ghost editor):
     color: #fff;
 }
 
-
-/* 7.5. Floating Header
-/* ---------------------------------------------------------- */
-
-.floating-header {
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    right: 0;
-    left: 0;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    height: 60px;
-    border-bottom: rgba(0,0,0,0.06) 1px solid;
-    background: rgba(255,255,255,0.95);
-    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-    transform: translate3d(0, -120%, 0);
-}
-
-.floating-active {
-    visibility: visible;
-    transition: all 500ms cubic-bezier(0.22, 1, 0.27, 1);
-    transform: translate3d(0, 0, 0);
-}
-
-.floating-header-logo {
-    overflow: hidden;
-    margin: 0 0 0 20px;
-    font-size: 1.6rem;
-    line-height: 1em;
-    letter-spacing: -1px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.floating-header-logo a {
-    display: flex;
-    align-items: center;
-    color: var(--darkgrey);
-    line-height: 1.1em;
-    font-weight: 700;
-}
-
-.floating-header-logo a:hover {
-    text-decoration: none;
-}
-
-.floating-header-logo img {
-    margin: 0 10px 0 0;
-    max-height: 20px;
-}
-
-.floating-header-divider {
-    margin: 0 5px;
-    line-height: 1em;
-}
-
-.floating-header-title {
-    flex: 1;
-    overflow: hidden;
-    margin: 0;
-    color: #2e2e2e;
-    font-size: 1.6rem;
-    line-height: 1.3em;
-    font-weight: bold;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-.floating-header-share {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    padding-left: 2%;
-    font-size: 1.3rem;
-    line-height: 1;
-}
-
-.floating-header-share a {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.floating-header-share svg {
-    width: auto;
-    height: 16px;
-    fill: #fff;
-}
-
-.floating-header-share-label {
-    flex-shrink: 0;
-    display: flex;
-    align-items: center;
-    margin-right: 10px;
-    color: rgba(0,0,0,0.7);
-    font-weight: 500;
-}
-
-.floating-header-share-label svg {
-    margin: 0 5px 0 10px;
-    width: 18px;
-    height: 18px;
-    stroke: rgba(0,0,0,0.7);
-    transform: rotate(90deg);
-}
-
-.floating-header-share-tw,
-.floating-header-share-fb {
-    display: block;
-    align-items: center;
-    width: 60px;
-    height: 60px;
-    color: #fff;
-    line-height: 48px;
-    text-align: center;
-    transition: all 500ms cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-.floating-header-share-tw {
-    background: #33b1ff;
-}
-
-.floating-header-share-fb {
-    background: #005e99;
-}
-
 .progress {
     position: absolute;
     right: 0;
@@ -1546,41 +1285,6 @@ Usage (In Ghost editor):
     width: 50%;
     height: inherit;
     background-color: var(--blue);
-}
-
-@media (max-width: 900px) {
-    .floating-header {
-        height: 40px;
-    }
-    .floating-header-title,
-    .floating-header-logo {
-        font-size: 1.5rem;
-    }
-    .floating-header-share-tw,
-    .floating-header-share-fb {
-        width: 40px;
-        height: 40px;
-        line-height: 38px;
-    }
-}
-
-@media (max-width: 800px) {
-    .floating-header-logo {
-        margin-left: 10px;
-    }
-    .floating-header-logo a {
-        color: #2e2e2e;
-    }
-    .floating-header-title,
-    .floating-header-divider {
-        visibility: hidden;
-    }
-}
-
-@media (max-width: 450px) {
-    .floating-header-share-label {
-        display: none;
-    }
 }
 
 
@@ -1700,169 +1404,6 @@ Usage (In Ghost editor):
 .error-template .post-feed {
     padding-top: 0;
 }
-
-
-/* 10. Subscribe Overlay
-/* ---------------------------------------------------------- */
-
-.subscribe-overlay {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: 9000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: rgba(0,25,40,0.97);
-    opacity: 0;
-    transition: opacity 200ms ease-in;
-    pointer-events: none;
-
-    backdrop-filter: blur(3px);
-}
-
-.subscribe-overlay:target {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.subscribe-overlay-content {
-    position: relative;
-    z-index: 9999;
-    margin: 0 0 5vw 0;
-    padding: 4vw;
-    color: #fff;
-    text-align: center;
-}
-
-.subscribe-overlay-logo {
-    position: fixed;
-    top: 23px;
-    left: 30px;
-    height: 30px;
-}
-
-.subscribe-overlay-title {
-    display: inline-block;
-    margin: 0 0 10px 0;
-    font-size: 6rem;
-    line-height: 1.15em;
-}
-
-.subscribe-overlay-description {
-    margin: 0 auto 50px;
-    max-width: 650px;
-    font-family: Georgia, serif;
-    font-size: 3rem;
-    line-height: 1.3em;
-    font-weight: 300;
-    opacity: 0.8;
-}
-
-.subscribe-overlay form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 0 auto;
-    max-width: 500px;
-}
-
-.subscribe-overlay .form-group {
-    flex-grow: 1;
-}
-
-.subscribe-overlay .subscribe-email {
-    display: block;
-    padding: 14px 20px;
-    width: 100%;
-    border: none;
-    color: var(--midgrey);
-    font-size: 2rem;
-    line-height: 1em;
-    font-weight: normal;
-    letter-spacing: 0.5px;
-    user-select: text;
-    border-radius: 8px;
-    transition: border-color 0.15s linear;
-
-    -webkit-appearance: none;
-}
-
-.subscribe-email:focus {
-    outline: 0;
-    border-color: color(var(--lightgrey) l(-2%));
-}
-
-.subscribe-overlay button {
-    display: inline-block;
-    margin: 0 0 0 15px;
-    padding: 0 25px;
-    height: 52px;
-    outline: none;
-    color: #fff;
-    font-size: 1.7rem;
-    line-height: 37px;
-    font-weight: 400;
-    text-align: center;
-    text-shadow: 0 -1px 0 rgba(0,0,0,0.1);
-    background: linear-gradient(
-    color(var(--blue) whiteness(+7%)),
-    color(var(--blue) lightness(-7%) saturation(-10%)) 60%,
-    color(var(--blue) lightness(-7%) saturation(-10%)) 90%,
-    color(var(--blue) lightness(-4%) saturation(-10%))
-    );
-    border-radius: 8px;
-    box-shadow: 0 0 0 1px inset rgba(0,0,0,0.14);
-
-    -webkit-font-smoothing: subpixel-antialiased;
-}
-
-.subscribe-overlay button:active,
-.subscribe-overlay button:focus {
-    background: color(var(--blue) lightness(-9%) saturation(-10%));
-}
-
-.subscribe-overlay-close {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    display: block;
-}
-
-.subscribe-overlay-close:before {
-    content: "";
-    position: absolute;
-    top: 40px;
-    right: 25px;
-    display: block;
-    width: 30px;
-    height: 2px;
-    background: #fff;
-    opacity: 0.8;
-    transform: rotate(45deg);
-}
-
-.subscribe-overlay-close:after {
-    content: "";
-    position: absolute;
-    top: 40px;
-    right: 25px;
-    display: block;
-    width: 30px;
-    height: 2px;
-    background: #fff;
-    opacity: 0.8;
-    transform: rotate(-45deg);
-}
-
-.subscribe-overlay-close:hover {
-    cursor: default;
-}
-
 
 /* 11. Site Footer
 /* ---------------------------------------------------------- */
